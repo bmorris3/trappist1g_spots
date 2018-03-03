@@ -1,0 +1,38 @@
+#PLANET PROPERTIES
+1			; Number of planets -- (if there are more than 1 planet, then the set of 8 planet properties are repeated)
+2457665.35084			; T0, epoch         (middle of first transit) in days.
+12.354473			; Planet Period      (days)
+0.00764		; (Rp/Rs)^2         (Rplanet / Rstar )^ 2
+0.038479248532003886			; Duration (days)   (physical duration of transit, not used)
+0.40659902232574435			; Impact parameter  (0= planet cross over equator)
+89.721			; Inclination angle of orbit (90 deg = planet crosses over equator)
+0.0			; Lambda of orbit (0 deg = orbital axis along z-axis)
+0.0			; ecosw
+0.0			; esinw
+#STAR PROPERTIES
+50		; Mean Stellar density (Msun/Rsun^3)
+3.3			; Stellar Rotation period (days)
+2500			; Stellar Temperature
+0.0			; Stellar metallicity
+0.0			; Tilt of the rotation axis of the star down from z-axis (degrees)
+0.0 0.648 0.0 -0.244	; Limb darkening (4 coefficients)
+100			; number of rings for limb darkening appoximation
+#SPOT PROPERTIES
+1				; number of spots
+0.31				; fractional lightness of spots (0.0=total dark, 1.0=same as star)
+#LIGHT CURVE
+all_lightcurves.txt			; lightcurve input data file
+2457665.2009626743				; start time to start fitting the light curve
+346.23463246878237			; duration of light curve to fit (days)
+1			; real maximum of light curve data (corrected for noise), 0 -> use downfrommax	
+1				; is light curve flattened (to zero) outside of transits?
+#ACTION	
+S		; M= unseeded mcmc
+74384338	; random seed	
+1.25000		; ascale
+10		; number of chains
+1000		; mcmc steps
+1		; 0= use downfrommax normalization, 1= calculate brightness factor for every model
+0.01
+0.1
+g_parambest_onetransit.txt
