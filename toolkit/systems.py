@@ -85,22 +85,15 @@ def transit_duration(params):
 
 
 def trappist1_all_transits(times):
-    from .spectra import nirspec_pixel_wavelengths, transmission_spectrum_depths
 
-    wl = nirspec_pixel_wavelengths()
     all_transit_params = [trappist1(planet) for planet in list('bcdefgh')]
-    all_transmission_depths = [transmission_spectrum_depths(planet)
-                               for planet in list('bcdefgh')]
-    flux = np.ones((len(times), len(wl)))
+    flux = np.ones(len(times))
 
-    for params, depths in zip(all_transit_params, all_transmission_depths):
-        for i, wavelength, depth in zip(range(len(wl)), wl, depths):
-            transit_params = deepcopy(params)
-            transit_params.rp = depth**0.5
-            m = batman.TransitModel(transit_params, times,
-                                    supersample_factor=supersample_factor,
-                                    exp_time=times[1]-times[0])
-            flux[:, i] += (m.light_curve(transit_params) - 1)
+    for params in all_transit_params:
+        m = batman.TransitModel(params, times,
+                                supersample_factor=supersample_factor,
+                                exp_time=times[1]-times[0])
+        flux += (m.light_curve(params) - 1)
     return flux
 
 

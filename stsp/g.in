@@ -16,10 +16,10 @@
 0.0			; Stellar metallicity
 0.0			; Tilt of the rotation axis of the star down from z-axis (degrees)
 0.0 0.648 0.0 -0.244	; Limb darkening (4 coefficients)
-100			; number of rings for limb darkening appoximation
+40			; number of rings for limb darkening appoximation
 #SPOT PROPERTIES
 1				; number of spots
-0.70				; fractional lightness of spots (0.0=total dark, 1.0=same as star)
+0.30				; fractional lightness of spots (0.0=total dark, 1.0=same as star)
 #LIGHT CURVE
 lightcurve.txt			; lightcurve input data file
 2457665.2007372407				; start time to start fitting the light curve
@@ -30,6 +30,6 @@ lightcurve.txt			; lightcurve input data file
 M		; M= unseeded mcmc
 74384338	; random seed	
 1.25000		; ascale
-50		; number of chains
-5000		; mcmc steps
+10		; number of chains
+10000		; mcmc steps
 1		; 0= use downfrommax normalization, 1= calculate brightness factor for every model
